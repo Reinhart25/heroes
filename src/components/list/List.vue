@@ -47,7 +47,7 @@ export default {
     this.getData()
   },
   methods: {
-    // 编辑
+    // 编辑功能第一步展示并传值
     showEditVue (ID) {
       console.log(ID)
       // this.$router.push(params:{id: ID})

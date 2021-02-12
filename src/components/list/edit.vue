@@ -54,6 +54,7 @@ export default {
     }
   },
   mounted () {
+    // 加载完edit 组件自动调用
     this.getHeroById()
   },
   methods: {
