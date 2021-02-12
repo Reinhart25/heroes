@@ -1,26 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Bar from '@/components/bar/Bar.vue'
+import Foo from '@/components/foo/Foo.vue'
+import List from '@/components/list/List.vue'
+import Add from '@/components/list/add.vue'
+import Edit from '@/components/list/edit.vue'
+// 导入要渲染的组件
 
 Vue.use(VueRouter)
 
+// 4.配置路由(设置路由匹配规则)
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/heroes',
+    name: 'heroes',
+    component: List
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/bar',
+    name: 'bar',
+    component: Bar
+  },
+  {
+    path: '/foo',
+    name: 'foo',
+    component: Foo
+  },
+  {
+    path: '/add',
+    name: 'add',
+    component: Add
+  },
+  {
+    path: '/edit/:id',
+    name: 'edit',
+    component: Edit
   }
 ]
-
+// 5.实例化路由并使用路由配置
 const router = new VueRouter({
+  linkExactActiveClass: 'active',
   mode: 'history',
   base: process.env.BASE_URL,
   routes

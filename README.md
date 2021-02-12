@@ -25,5 +25,11 @@ npm run test
 npm run lint
 ```
 
+### Run your server, server in dir: server
+```
+
+json-server --watch --port 3001 db.json
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
