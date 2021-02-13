@@ -38,7 +38,7 @@
           placeholder="请输入英雄年龄"
         />
       </div>
-      <a class="btn btn-success" @click.prevent="handleAddHero()">
+      <a class="btn btn-success" @click.prevent="handleEdit()">
         Submit
       </a>
     </form>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   data () {
     return {
@@ -63,7 +63,7 @@ export default {
     // 2.显示要编辑的内容
     // (1)Input v-model = “数据”  数据来源是被点击的英雄数据
     // (2)英雄数据 axios.get(url+ID)
-    // (3)ID 来源于list.vue 编辑按钮
+    // (3)ID 来源于list.vue 编辑按钮 v.id
     // // A 组件 数据id  this.$router.push(params:{id: ID})
     // // B 组件 使用数据id  $router.params.id
     // 3.做一些修改，并返回list 组件
@@ -71,11 +71,19 @@ export default {
       // this.$router 获取路由对象
       // this.$route 获取路由配置对象
       // console.log(this.$route.params.id)
-      axios
-        .get('http://localhost:3001/heroes/' + this.$route.params.id)
+      this.axios
+        .get('heroes/' + this.$route.params.id)
         .then(res => {
           // console.log(res.data)
           this.formdata = res.data
+        })
+    },
+    // 编辑 - 表单提交
+    handleEdit () {
+      this.axios.put('heroes/' + this.$route.params.id, this.formdata)
+        .then(res => {
+          // 回到列表组件
+          this.$router.push({ name: 'heroes' })
         })
     }
   }

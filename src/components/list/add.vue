@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   data () {
     return {
@@ -67,7 +67,7 @@ export default {
       //   gender: this.gender,
       //   age: this.age
       // }
-      axios.post('http://localhost:3001/heroes', this.formdata).then(res => {
+      this.axios.post('/heroes', this.formdata).then(res => {
         // 3. 回到列表组件
         this.$router.push({ name: 'heroes' })
       })

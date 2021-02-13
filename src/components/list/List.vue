@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   name: 'List',
@@ -60,7 +60,7 @@ export default {
     },
     // 获取数据
     getData () {
-      axios.get('http://localhost:3001/heroes').then(res => {
+      this.axios.get('heroes').then(res => {
         // console.log(res)
         const { status, data } = res
         if (status === 200) {
@@ -74,7 +74,7 @@ export default {
       if (confirm('Sure?')) {
         // 需要id ,英雄数据 1.在data 选项中有没有id
         //  2.方法能不能传参数
-        axios.delete('http://localhost:3001/heroes/' + ID).then(res => {
+        this.axios.delete('heroes/' + ID).then(res => {
           console.log(res)
           const { status } = res
           if (status === 200) {
